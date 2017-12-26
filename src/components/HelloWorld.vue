@@ -55,9 +55,6 @@ export default {
   name: 'HelloWorld',
   data() {
     return {
-      msg: 'Welcome to Your Vue.js App',
-      input1: '',
-      input2: '',
       input3: '',
       color1: null,
       color2: null,
@@ -75,7 +72,7 @@ export default {
           var arr = color.split('')
           color = `${arr[0]}${arr[0]}${arr[1]}${arr[1]}${arr[2]}${arr[2]}`
         } else if (color.length === 6) {} else {
-          return false
+          return ''
         }
         var r = parseInt(color.substr(0, 2), 16)
         var g = parseInt(color.substr(2, 2), 16)
@@ -97,7 +94,6 @@ export default {
         var r = Math.round(arr1[0] - step1 * i)
         var g = Math.round(arr1[1] - step2 * i)
         var b = Math.round(arr1[2] - step3 * i)
-        console.log(r, g, b)
         var obj = {}
         var r1 = r.toString(16)
         var g1 = g.toString(16)
@@ -110,11 +106,11 @@ export default {
         list.push(obj)
       }
       var last = {}
-      last.text = `#${arr2[0].toString(16)}${arr2[1].toString(16)}${arr2[2].toString(16)}`
-      last.color = `#${arr2[0].toString(16)}${arr2[1].toString(16)}${arr2[2].toString(16)}`
+      last.text = `#${('00' + arr2[0].toString(16)).substr(-2)}${('00' + arr2[1].toString(16)).substr(-2)}${('00' + arr2[2].toString(16)).substr(-2)}`
+      last.color = `#${('00' + arr2[0].toString(16)).substr(-2)}${('00' + arr2[1].toString(16)).substr(-2)}${('00' + arr2[2].toString(16)).substr(-2)}`
       list.push(last)
       this.arr = list
-      console.log(arr1, arr2, step1, step2, step3, list)
+      // console.log(arr1, arr2, step1, step2, step3, list)
     },
     clear: function() {
       this.input3 = ''
@@ -155,8 +151,9 @@ export default {
   line-height: 20px;
   margin: 10px 0;
   border: 1px solid #fff;
-  text-shadow: 0 0 1px #fff;
+  text-shadow: 0 0 2px #fff;
   color: #000;
+  font-weight: 900;
 }
 
 body>.el-container {
